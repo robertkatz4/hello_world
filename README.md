@@ -1,2 +1,3 @@
 # hello_world
-rob's first python script
+
+Hi. Brooklyn resident, coding enthusiast. I put to put some of my own Python/SQL/Swift projects on here, and collaborate on a few others.
