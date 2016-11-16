@@ -1,0 +1,27 @@
+# Author: Robert Katz
+# Version: 0.1, python 2.7.12
+# Program description: Designed to be run from the command line. Shows use of Postgres, Psycopg2, and python/pandas together
+# Input parameters:  1. csv, imported into postgres 
+# CREATE TABLE G3_8_ELA_Math_2016 (SCHOOLYR_END_DT date,	BEDS_CD char(12), NAME varchar(100), SUBJECT varchar(20), STUDENT_SUB varchar(20), TOTAL_TSTD int, LEVEL1_CT int, LEVEL1_PCT double precision, LEVEL2_CT int, LEVEL2_PCT double precision, LEVEL3_CT int, LEVEL3_PCT double precision, LEVEL4_CT int, LEVEL4_PCT double precision, LEVEL2_4_PCT double precision, LEVEL_3_4_PCT double precision, MEAN_SCALE_SCORE int);
+# COPY g3_8_ela_math_2016 FROM '/Users/blue8690/projects/SuccessAcademy/ELAandMathDistrictandBuildingMEDIA.csv' with CSV HEADER;
+# output: a proper, legit pandas dataframe so I can work on data from CSVs in a relational database using python/pandas
+# Revision history:
+##  11-16-16:  initial commit
+
+# Small script to show PostgreSQL and Pyscopg together
+#db = web.database(dbn='postgres', db="weddingwebsite", user='sid', pw='Blue8690')
+
+
+import psycopg2
+import pandas as pd
+import numpy as np
+
+try:
+    conn = psycopg2.connect("dbname='****' user='sid' host='localhost' password='***'")
+except:
+    print "I am unable to connect to the database"
+
+cur = conn.cursor()
+cur.execute("""SELECT schoolyr_end_dt from g3_8_ela_math_2016""")
+rows = pd.DataFrame(cur.fetchall(), columns=['schoolyr_end_dt'
+print rows.describe()
