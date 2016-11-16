@@ -23,5 +23,5 @@ except:
 
 cur = conn.cursor()
 cur.execute("""SELECT schoolyr_end_dt from g3_8_ela_math_2016""")
-rows = pd.DataFrame(cur.fetchall(), columns=['schoolyr_end_dt'
+rows = pd.DataFrame(cur.fetchall(), columns=['schoolyr_end_dt'])
 print rows.describe()
